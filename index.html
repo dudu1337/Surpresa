@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#1a0a1e">
+    <title>Nosso Álbum ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Quicksand:wght@300..700&family=Sacramento&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=love-v3">
+</head>
+<body>
+    <div id="app">
+
+        <!-- ===================== TELA: PACOTINHOS ===================== -->
+        <section id="screen-packs" class="screen active">
+            <div class="screen-header">
+                <h2>Pacotinhos</h2>
+                <p class="screen-hint">Toque para rasgar e revelar as figurinhas!</p>
+            </div>
+            <div class="packs-container" id="packs-container">
+                <!-- Pack 1 -->
+                <div class="pack" data-pack="0" id="pack-0">
+                    <div class="pack-wrapper">
+                        <div class="pack-body">
+                            <div class="pack-lid">
+                                <div class="pack-tear-edge"></div>
+                            </div>
+                            <div class="pack-base">
+                                <div class="pack-label">
+                                    <span class="pack-number">1</span>
+                                    <span class="pack-count">3 figurinhas</span>
+                                </div>
+                                <div class="pack-design">
+                                    <div class="pack-heart">♥</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pack-opened-badge">✓ Aberto</div>
+                    </div>
+                </div>
+                <!-- Pack 2 -->
+                <div class="pack" data-pack="1" id="pack-1">
+                    <div class="pack-wrapper">
+                        <div class="pack-body">
+                            <div class="pack-lid">
+                                <div class="pack-tear-edge"></div>
+                            </div>
+                            <div class="pack-base">
+                                <div class="pack-label">
+                                    <span class="pack-number">2</span>
+                                    <span class="pack-count">3 figurinhas</span>
+                                </div>
+                                <div class="pack-design">
+                                    <div class="pack-heart">♥</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pack-opened-badge">✓ Aberto</div>
+                    </div>
+                </div>
+                <!-- Pack 3 (special) -->
+                <div class="pack pack-special" data-pack="2" id="pack-2">
+                    <div class="pack-wrapper">
+                        <div class="pack-body">
+                            <div class="pack-lid">
+                                <div class="pack-tear-edge"></div>
+                            </div>
+                            <div class="pack-base">
+                                <div class="pack-label">
+                                    <span class="pack-number">3</span>
+                                    <span class="pack-count">5 figurinhas ✨</span>
+                                </div>
+                                <div class="pack-design">
+                                    <div class="pack-heart">♥</div>
+                                    <div class="pack-star">★</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pack-opened-badge">✓ Aberto</div>
+                    </div>
+                </div>
+            </div>
+            <div class="packs-footer">
+                <button id="btn-go-album" class="btn-secondary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                    <span>Ver Álbum</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- ===================== TELA: REVELAÇÃO ===================== -->
+        <section id="screen-reveal" class="screen">
+            <div class="reveal-container">
+                <div class="reveal-pack-wrapper" id="reveal-pack-wrapper">
+                    <div class="reveal-pack-foil" id="reveal-pack-foil">
+                        <div class="foil-top">
+                            <!-- Jagged top lid -->
+                        </div>
+                        <div class="foil-bottom">
+                            <div class="foil-body">
+                                <span class="foil-logo">❤️</span>
+                                <span class="foil-title">LOVE ALBUM</span>
+                                <span class="foil-subtitle">Namorados 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tear-particles" id="tear-particles"></div>
+                </div>
+                <div class="reveal-stickers" id="reveal-stickers">
+                    <!-- Stickers will slide out here face-down -->
+                </div>
+                <div class="reveal-counter" id="reveal-counter"></div>
+                <button id="btn-reveal-collect" class="btn-primary" style="display:none;">
+                    <span>Coletar Todas!</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                </button>
+            </div>
+        </section>
+
+        <!-- ===================== TELA: ÁLBUM ===================== -->
+        <section id="screen-album" class="screen">
+            <div class="album-container">
+                <div class="book" id="book">
+                    
+                    <!-- SPREAD 0: Capa -->
+                    <div class="book-spread single-spread active" data-spread="0">
+                        <div class="book-page page-cover">
+                            <div class="page-inner cover-page">
+                                <div class="cover-header-decor">
+                                    <span class="decor-star">✦</span>
+                                    <span class="decor-heart">❤️</span>
+                                    <span class="decor-star">✦</span>
+                                    <span class="decor-heart" style="color: #b5ead7">💙</span>
+                                    <span class="decor-star">✦</span>
+                                </div>
+                                <h1 class="cover-main-title">ZOCA</h1>
+                                <h2 class="cover-sub-title">O AMOR DA MINHA VIDA</h2>
+                                <div class="cover-badge-text">ÁLBUM OFICIAL DE NAMORADOS</div>
+                                <div class="cover-edition-text">EDIÇÃO ESPECIAL: DIA DOS NAMORADOS 2026</div>
+                                
+                                <div class="cover-illustrations">
+                                    <div class="cover-ill-card card-1">
+                                        <div class="cover-ill-photo" style="background-image: url('assets/imagens zoca/19-10.jpg')"></div>
+                                    </div>
+                                    <div class="cover-ill-card card-2">
+                                        <div class="cover-ill-photo" style="background-image: url('assets/imagens zoca/27-02.jpg')"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SPREAD 1: Introdução -->
+                    <div class="book-spread" data-spread="1">
+                        <!-- Left Page: 19-10 & 20-11 -->
+                        <div class="book-page left-page">
+                            <div class="page-inner text-page">
+                                <h3 class="page-date">19 de Outubro</h3>
+                                <p class="page-text">
+                                    Num dia comum, à noite, alguém apareceu pra mim, num aplicativo que deve ser falado. E nesse mesmo dia conversamos como se fôssemos amigos, sem filtro, sem nenhuma maldade, só agindo como bons jovens sem pensar no que o outro ia achar de estranho do outro.
+                                </p>
+                                <div class="album-photo" style="--rot: -2deg;">
+                                    <img src="assets/imagens zoca/19-10.jpg" alt="19 de Outubro">
+                                    <div class="photo-caption">19/10 - Como bons amigos...</div>
+                                </div>
+
+                                <h3 class="page-date">20 de Novembro</h3>
+                                <p class="page-text">
+                                    Eu recebo algo que me deixou muito feliz: alguém dando valor a querer estar comigo, me chamando pra sair. Acho que nunca me senti um homem tão feliz. Não falando que sou feio ou nunca fui atraente, mas foi uma situação especial pra mim. Eu não estava em JF, mas vi que você queria me ver e estar comigo.
+                                </p>
+                                <div class="album-photo" style="--rot: 1.5deg;">
+                                    <img src="assets/imagens zoca/20-11.jpg" alt="20 de Novembro">
+                                    <div class="photo-caption">20/11 - Querer estar junto</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Right Page: 05-12 & 06-12 -->
+                        <div class="book-page right-page">
+                            <div class="page-inner text-page">
+                                <h3 class="page-date">05 de Dezembro</h3>
+                                <p class="page-text">
+                                    O dia no qual eu mudei meu visual pela primeira vez. Eu arrisquei, saí da zona de conforto, tava me tornando finalmente uma pessoa livre e não me importando realmente com o que minha família achava das minhas coisas, algo que meu pai e tanto minha mãe não apoiavam. Eu pintei meu cabelo!
+                                </p>
+                                
+                                <h3 class="page-date">06 de Dezembro</h3>
+                                <p class="page-text">
+                                    Você me chama pra sair. Neste dia eu estava num churrasco de graça, no Cascatinha Country Club, pro aniversário do pai de um amigo. E em algum momento eu falei que teria que sair. Claro que não falei pra todos, mas pelo menos pro Luiz, o anfitrião: <em>"Eu sempre dei o aval de você nos trocar por mulher, dessa vez tenho direito de fazer isso."</em> E no meio do churrasco eu saio, passo em casa pra pegar uma vodka e vou rumo à casa de Isadora. No dia ainda somente uma menina que eu achava linda e queria me relacionar. A única foto que tenho desse dia é a incrível foto do perfume da bolsonara!
+                                </p>
+                                <div class="perfume-note">
+                                    <div class="perfume-emoji">🧴🇧🇷</div>
+                                    <p class="perfume-text">O lendário perfume da Bolsonara!</p>
+                                </div>
+                                <p class="page-hint">Esta é apenas a introdução... a história real está prestes a começar!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SPREAD 2: O Começo & Figurinha 00 -->
+                    <div class="book-spread" data-spread="2">
+                        <!-- Left Page: Primeiro Encontro e Fig 00 -->
+                        <div class="book-page left-page">
+                            <div class="page-inner text-page sticker-page">
+                                <h3 class="page-date">Quando nos vimos...</h3>
+                                <p class="page-text">
+                                    A primeira vez que te vi eu me encantei. Conversamos sem parar todos os dias a partir dali, você foi meu tudo desde aquele momento. Eu senti que achei a pessoa com quem eu podia ser quem sempre fui, não ter que reprimir ser o "zoca" (que na época ainda era Dudu). Eu podia falar de jogos, animes, músicas, bobeiras, e tudo você me entendia.
+                                </p>
+                                
+                                <div class="sticker-wrapper-album">
+                                    <h4 class="sticker-title">✨ Figurinha Especial ✨</h4>
+                                    <p class="sticker-desc">A constelação do dia em que nos conhecemos</p>
+                                    <div class="sticker-slot slot-special" data-sticker="0" id="slot-0">
+                                        <div class="slot-empty">
+                                            <span class="slot-number">00</span>
+                                            <span class="slot-label">Brilhante</span>
+                                            <div class="slot-sparkles">
+                                                <span>✦</span><span>✧</span><span>✦</span><span>✧</span>
+                                            </div>
+                                        </div>
+                                        <div class="slot-filled">
+                                            <div class="sticker-image shiny" data-sticker-id="0">
+                                                <div class="sticker-placeholder">00</div>
+                                                <div class="holographic-overlay"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Right Page: 09-12, 11-12, 12-12 -->
+                        <div class="book-page right-page">
+                            <div class="page-inner text-page scrollable-page">
+                                <h3 class="page-date">09 de Dezembro</h3>
+                                <p class="page-text">
+                                    Eu reclamando do meu chefe na época e você rindo kkk, ainda me chamou de "escurinho", ali você me conquistou.
+                                </p>
+                                <div class="album-photo small-photo" style="--rot: -1deg;">
+                                    <img src="assets/imagens zoca/09-12.jpg" alt="09 de Dezembro">
+                                    <div class="photo-caption">09/12 - Ali você me conquistou</div>
+                                </div>
+
+                                <h3 class="page-date">11 de Dezembro</h3>
+                                <p class="page-text">
+                                    Simplesmente a primeira vez que iríamos sair, e simplesmente ALI foi o dia que eu sabia que te amava. Era 100% de certeza que eu queria namorar com você. O primeiro dia saindo juntos e a gente parecia um casal tão lindo. Comprar coisas do Fluminense, comer na praça de alimentação... Parece simples, mas aquele dia simbolizou muito pra mim.
+                                </p>
+                                <div class="album-photos-row">
+                                    <div class="album-photo small-photo" style="--rot: -2deg; width: 48%;">
+                                        <img src="assets/imagens zoca/11-12.jpg" alt="11 de Dezembro 1">
+                                        <div class="photo-caption">Primeiro dia saindo</div>
+                                    </div>
+                                    <div class="album-photo small-photo" style="--rot: 2deg; width: 48%;">
+                                        <img src="assets/imagens zoca/11-12.2.jpg" alt="11 de Dezembro 2">
+                                        <div class="photo-caption">Meu número pra você</div>
+                                    </div>
+                                </div>
+                                <p class="page-text font-small">
+                                    E foi nesse dia que você me passou seu número, porque eu não gostava de conversar pelo Insta. Eu precisava perguntar se você tinha chegado bem, precisava poder falar com você todo dia, o tempo todo.
+                                </p>
+
+                                <h3 class="page-date">12 de Dezembro</h3>
+                                <p class="page-text">
+                                    Com a camisa que compramos juntos e hidratando meu cabelo com o óleo que você comprou pra mim, pra eu cuidar das minhas novas madeixas.
+                                </p>
+                                <video class="album-video" src="assets/videos/12-12.mp4" controls preload="metadata"></video>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SPREAD 3: A Conexão & Figurinha 01 & 02 -->
+                    <div class="book-spread" data-spread="3">
+                        <!-- Left Page: A distância & Apelido ZOCA -->
+                        <div class="book-page left-page">
+                            <div class="page-inner text-page">
+                                <h3 class="page-title-romantic">Mais Unidos Que Nunca</h3>
+                                <p class="page-text">
+                                    E essa semana seguinte foi como se minha vida tivesse virado a melhor do mundo. A gente se viu durante a semana, conversou, falou que se amava, foi a melhor coisa que aconteceu na minha vida.
+                                </p>
+                                <p class="page-text">
+                                    E no dia 22 de dezembro a gente se despediu pra você poder passar o ano novo com sua família e eu com a minha, sem saber quando nos veríamos de novo. O medo de você me esquecer era grande, então eu queria te contar tudo e te mostrar tudo que fazia: de vídeos da Leona à foto jogando bola, as coisas que eu comia, a tudo. E ver que era recíproco me fez tão feliz! Receber vídeos seus e da Alycia, você contando as coisas que fez, os presentes que ganhou. Foi o momento mais importante porque, mesmo longe, nós estreitamos nossos laços.
+                                </p>
+                                <div class="zoca-creation-box">
+                                    <p class="page-text">
+                                        E foi aqui que o apelido <strong>Zoca</strong> foi criado. Enquanto você estava com o Zoiudo, chamou ele de <em>zocaroca</em>, e daí saiu: <em>zocoroco</em> e <em>zoca</em>. E depois daí nunca mais existiu Dudu e Isa, e sim...
+                                    </p>
+                                    <div class="zoca-highlight-container">
+                                        <span class="zoca-highlight" onclick="sparkleHeartEffect(event)">ZOCA</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Right Page: 12-01 e 17-01 (Figurinha 01 e 02) -->
+                        <div class="book-page right-page">
+                            <div class="page-inner text-page sticker-page">
+                                <h3 class="page-date">12 de Janeiro</h3>
+                                <p class="page-text">
+                                    A passada da virada até chegar o dia que te veria de novo não foi fácil, mas eu aguentei. EU SOBREVIVI ATÉ O DIA 12-01! O momento em que pra mim eu sabia que tinha encontrado o amor da minha vida. A saudade foi tão importante pra fazer algo que nunca tive coragem: fazer um piercing! Estar com você é poder "ser eu", sem julgamentos.
+                                </p>
+                                
+                                <div class="sticker-grid-row">
+                                    <div class="sticker-slot" data-sticker="1" id="slot-1">
+                                        <div class="slot-empty">
+                                            <span class="slot-number">01</span>
+                                            <span class="slot-label">Piercing ⚡</span>
+                                        </div>
+                                        <div class="slot-filled">
+                                            <div class="sticker-image" data-sticker-id="1">
+                                                <div class="sticker-placeholder">01</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="sticker-slot" data-sticker="2" id="slot-2">
+                                        <div class="slot-empty">
+                                            <span class="slot-number">02</span>
+                                            <span class="slot-label">Dormindo Onça 🐆</span>
+                                        </div>
+                                        <div class="slot-filled">
+                                            <div class="sticker-image" data-sticker-id="2">
+                                                <div class="sticker-placeholder">02</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h3 class="page-date" style="margin-top:12px;">17 de Janeiro</h3>
+                                <p class="page-text font-small">
+                                    Já tínhamos dormido juntos algumas vezes até aí. Você me via todo dia, era tão bom estar com você nesse dia inclusive dormimos na onça. E nesse mesmo dia a gente ia sair com minha melhor amiga. Eu ia te apresentar pra uma das pessoas importantes pra mim, e mesmo com vergonha você abraçou minha amiga. Ver vocês duas juntas foi tão especial, podermos ser um "casal oficial" pela primeira vez. Em você eu via tudo que eu queria pra passar todos os dias da minha vida.
+                                </p>
+                                <div class="album-photos-row" style="margin-top:5px;">
+                                    <div class="album-photo micro-photo" style="--rot: -1.5deg; width:48%;">
+                                        <img src="assets/imagens zoca/17-01.jpg" alt="17 de Janeiro 1">
+                                    </div>
+                                    <div class="album-photo micro-photo" style="--rot: 2deg; width:48%;">
+                                        <img src="assets/imagens zoca/17-01.2.jpg" alt="17 de Janeiro 2">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SPREAD 4: Loucuras & Figurinha 03 -->
+                    <div class="book-spread" data-spread="4">
+                        <!-- Left Page: BK & Cheesecake -->
+                        <div class="book-page left-page">
+                            <div class="page-inner text-page sticker-page">
+                                <h3 class="page-date">20 e 29 de Janeiro</h3>
+                                <p class="page-text font-small">
+                                    <strong>20-01:</strong> O dia que tentamos coisar pela primeira vez... Tentamos, porque acho que não deu muito certo kkk, mas deu uma canseira danada e fomos ao BK de madrugada, às 3 da manhã, pra comer 2 rodeios. Isso foi eu sendo eu e você não julgando e aceitando minha loucura!
+                                </p>
+                                <div class="album-photos-row" style="margin: 5px 0;">
+                                    <div class="album-photo micro-photo" style="--rot: -2deg; width:48%;">
+                                        <img src="assets/imagens zoca/20-01.jpg" alt="BK 1">
+                                    </div>
+                                    <div class="album-photo micro-photo" style="--rot: 1deg; width:48%;">
+                                        <img src="assets/imagens zoca/20-01.2.jpg" alt="BK 2">
+                                    </div>
+                                </div>
+                                <p class="page-text font-small">
+                                    <strong>29-01:</strong> O dia que coisamos oficialmente! Com você eu sempre pude ser eu, estar com você foi tudo pra mim. E nesse dia ainda fizemos a cheesecake viral de iogurte e oreo, que ficou ruim pro meu gosto kkk, mas como fizemos juntos foi tão especial.
+                                </p>
+                                
+                                <div class="sticker-slot" data-sticker="3" id="slot-3" style="width: 100px; margin: 10px auto 0;">
+                                    <div class="slot-empty">
+                                        <span class="slot-number">03</span>
+                                        <span class="slot-label">BK & Doces 🍰</span>
+                                    </div>
+                                    <div class="slot-filled">
+                                        <div class="sticker-image" data-sticker-id="3">
+                                            <div class="sticker-placeholder">03</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Right Page: 31-01, 05-02, 12-02 -->
+                        <div class="book-page right-page">
+                            <div class="page-inner text-page scrollable-page">
+                                <h3 class="page-date">31 de Janeiro</h3>
+                                <p class="page-text">
+                                    Não aconteceu nada entre nós esse dia, mas é um marco de você ter ido a uma festa com sua amiga, e continuar se importando em me dar notícias, em querer saber o que eu sentia em relação a isso. Isso é muito importante pra mim!
+                                </p>
+                                <div class="album-photo small-photo" style="--rot: 1deg;">
+                                    <img src="assets/imagens zoca/30-01.jpg" alt="Cheesecake / Festa">
+                                    <div class="photo-caption">Nos importando um com o outro</div>
+                                </div>
+
+                                <h3 class="page-date">05 de Fevereiro</h3>
+                                <p class="page-text">
+                                    O dia que eu realizei meu sonho: <strong>IR NUMA CAFETERIA COM VOCÊ</strong>. Sempre foi o que eu quis desde a primeira vez que conversamos. Ouvir você falar, sentados tomando um café da tarde... A calmaria que isso deu no meu coração e a felicidade foi algo sem explicação.
+                                </p>
+                                <div class="album-photo small-photo" style="--rot: -2deg;">
+                                    <img src="assets/imagens zoca/05-02.jpg" alt="Cafeteria">
+                                    <div class="photo-caption">05/02 - Sonho do café</div>
+                                </div>
+
+                                <h3 class="page-date">12 de Fevereiro</h3>
+                                <p class="page-text">
+                                    O dia que o Zoca deixou você pintar meu cabelo de rosa! Quem seria o imbecil que deixaria? Eu. Ver sua felicidade no olhar em fazer bobeiras comigo me deixa tão feliz.
+                                </p>
+                                <div class="album-photo small-photo" style="--rot: 2.5deg;">
+                                    <img src="assets/imagens zoca/12-02.jpg" alt="Cabelo Rosa">
+                                    <div class="photo-caption">12/02 - Madeixas rosa! 🌸</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SPREAD 5: Conquistas & Figurinha 04 -->
+                    <div class="book-spread" data-spread="5">
+                        <!-- Left Page: Amigos do serviço & LoL -->
+                        <div class="book-page left-page">
+                            <div class="page-inner text-page sticker-page">
+                                <h3 class="page-date">21 de Fevereiro</h3>
+                                <p class="page-text">
+                                    O dia que eu te apresentei pros meus amigos do serviço. Todos estavam ansiosos pra conhecer a pessoa que mudou o Dudu, que fez o menino mais alegre da CGS virar o menino mais alegre do mundo. Eles conheceram e entenderam que a Zoca é o amor da minha vida.
+                                </p>
+                                <div class="album-photo small-photo" style="--rot: -1.5deg; margin: 10px auto;">
+                                    <img src="assets/imagens zoca/24-02.jpg" alt="Amigos do Serviço">
+                                    <div class="photo-caption">21/02 - Apresentando a Zoca</div>
+                                </div>
+
+                                <div class="sticker-slot" data-sticker="4" id="slot-4" style="width: 100px; margin: 0 auto;">
+                                    <div class="slot-empty">
+                                        <span class="slot-number">04</span>
+                                        <span class="slot-label">Trabalho 🏢</span>
+                                    </div>
+                                    <div class="slot-filled">
+                                        <div class="sticker-image" data-sticker-id="4">
+                                            <div class="sticker-placeholder">04</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Right Page: Nick do Lol, Cafés & Fotos -->
+                        <div class="book-page right-page">
+                            <div class="page-inner text-page">
+                                <h3 class="page-date">24 de Fevereiro</h3>
+                                <p class="page-text">
+                                    MUDEI MEU NICK DO LOL PRA <strong>ZOCA</strong>! Tomei muito xingo de amigo kkkk, porque na teoria é um nick bobo, mas eu estava com o amor da minha vida sempre que eu fosse jogar. Ter você comigo até nos momentos em que estou longe.
+                                </p>
+                                
+                                <h3 class="page-date">27 de Fevereiro</h3>
+                                <p class="page-text font-small">
+                                    Você pode não gostar dessa foto, mas ela representa muito pra mim. Eu me senti um pai tirando uma foto de sua família. Não importa se a foto está embaçada, você estava genuinamente feliz comigo, e eu estava feliz tirando.
+                                </p>
+                                <div class="album-photo micro-photo" style="--rot: 2deg; display:block; width: 60%; margin: 5px auto;">
+                                    <img src="assets/imagens zoca/27-02.jpg" alt="Foto no Café">
+                                    <div class="photo-caption">27/02 - Felicidade genuína</div>
+                                </div>
+
+                                <h3 class="page-date">04 de Março</h3>
+                                <p class="page-text font-small">
+                                    Uma onda de bons cafés, toda semana aproveitando pra tomar um café, virando rotina. Nunca me enjoaria de olhar pra você e te ouvir falando baboseiras. E estava aí uma prévia do pedido: um anel de plástico de canudinho kkk.
+                                </p>
+                                <div class="album-photo micro-photo" style="--rot: -2deg; display:block; width: 50%; margin: 5px auto;">
+                                    <img src="assets/imagens zoca/04-03.jpg" alt="Anel Canudinho">
+                                    <div class="photo-caption">04/03 - Prévia do anel</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SPREAD 6: O Pedido de Namoro & Figurinhas 05 & 06 -->
+                    <div class="book-spread" data-spread="6">
+                        <!-- Left Page: Outback & Pedido -->
+                        <div class="book-page left-page">
+                            <div class="page-inner text-page sticker-page">
+                                <h3 class="page-date">13 de Março - O Grande Dia</h3>
+                                <p class="page-text font-small">
+                                    Quem diria que a ideia era começar a namorar dia 12/03, mas dia 12/03 era aniversário do Flávio, então escolhi 13/03. Decidi te levar no Outback.
+                                </p>
+                                <p class="page-text font-small">
+                                    O dia começou legal, passeamos, fomos à loja de discos, mas chegando em casa você emburrou comigo porque achou que eu estava te enrolando e fazendo de boba. O que eu fiz? Estraguei a surpresa e te pedi em namoro logo ali! Um momento estranho com você triste, feliz, chorando e rindo. Mas eu tinha certeza que fiz a melhor escolha da minha vida. Ter a Zoca de verdade, com medos e inseguranças, é o que eu precisava. Te entender e você me entender fez nosso relacionamento ser o que é hoje.
+                                </p>
+
+                                <div class="sticker-grid-row">
+                                    <div class="sticker-slot" data-sticker="5" id="slot-5">
+                                        <div class="slot-empty">
+                                            <span class="slot-number">05</span>
+                                            <span class="slot-label">Outback 🥩</span>
+                                        </div>
+                                        <div class="slot-filled">
+                                            <div class="sticker-image" data-sticker-id="5">
+                                                <div class="sticker-placeholder">05</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="sticker-slot" data-sticker="6" id="slot-6">
+                                        <div class="slot-empty">
+                                            <span class="slot-number">06</span>
+                                            <span class="slot-label">Namorados ❤️</span>
+                                        </div>
+                                        <div class="slot-filled">
+                                            <div class="sticker-image" data-sticker-id="6">
+                                                <div class="sticker-placeholder">06</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Right Page: Imagens do dia 13-03 -->
+                        <div class="book-page right-page">
+                            <div class="page-inner text-page scrollable-page">
+                                <h3 class="page-title-romantic">Nossas Fotos do Dia 13</h3>
+                                <div class="album-photo small-photo" style="--rot: -1.5deg;">
+                                    <img src="assets/imagens zoca/13-03.jpg" alt="Pedido 1">
+                                    <div class="photo-caption">13/03 - A aliança</div>
+                                </div>
+                                <div class="album-photos-row">
+                                    <div class="album-photo micro-photo" style="--rot: 2deg; width:48%;">
+                                        <img src="assets/imagens zoca/13-03.2.jpg" alt="Pedido 2">
+                                    </div>
+                                    <div class="album-photo micro-photo" style="--rot: -1deg; width:48%;">
+                                        <img src="assets/imagens zoca/13.03.3.jpg" alt="Pedido 3">
+                                    </div>
+                                </div>
+                                <p class="page-text font-small">
+                                    Aqui está um pedacinho em vídeo desse dia que mudou nossas vidas para sempre:
+                                </p>
+                                <video class="album-video" src="assets/videos/13-03.mp4" controls preload="metadata"></video>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SPREAD 7: Jogos & Silvania (Figurinha 07) -->
+                    <div class="book-spread" data-spread="7">
+                        <!-- Left Page: CS & Silvania Families -->
+                        <div class="book-page left-page">
+                            <div class="page-inner text-page sticker-page">
+                                <h3 class="page-date">17 de Março</h3>
+                                <p class="page-text font-small">
+                                    Primeira vez que você viu uma live minha de CS. Pra mim, um cara que sempre quis viver disso, ter a melhor fã do mundo fez meu dia muito feliz. Você me apoiou e estava lá comigo!
+                                </p>
+                                <div class="album-photo micro-photo" style="--rot: 2deg; display:block; width: 60%; margin: 5px auto;">
+                                    <img src="assets/imagens zoca/17-03.jpg" alt="Live CS">
+                                    <div class="photo-caption">17/03 - Apoiando meus hobbies</div>
+                                </div>
+
+                                <h3 class="page-date" style="margin-top:10px;">20 de Março</h3>
+                                <p class="page-text font-small">
+                                    O Zoca te ama, e por isso permite você ser você. Nesse dia compramos nosso "primeiro filho", um Silvania Families! Ver seu olho brilhando me faz o homem mais feliz do mundo.
+                                </p>
+                                
+                                <div class="sticker-slot" data-sticker="7" id="slot-7" style="width: 100px; margin: 5px auto 0;">
+                                    <div class="slot-empty">
+                                        <span class="slot-number">07</span>
+                                        <span class="slot-label">Silvania 🐰</span>
+                                    </div>
+                                    <div class="slot-filled">
+                                        <div class="sticker-image" data-sticker-id="7">
+                                            <div class="sticker-placeholder">07</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Right Page: Surprezoca & BTS -->
+                        <div class="book-page right-page">
+                            <div class="page-inner text-page">
+                                <h3 class="page-date">24 de Março</h3>
+                                <p class="page-text">
+                                    Simplesmente a <strong>Surprezoca</strong>. Você fazer coisas por mim que eu nunca imaginei. Você não comprou nada, mas o valor sentimental dos presentes vale mais que qualquer dinheiro.
+                                </p>
+                                <div class="album-photo small-photo" style="--rot: -2deg; margin: 5px auto; display:block; width: 65%;">
+                                    <img src="assets/imagens zoca/24-03.jpg" alt="Surprezoca">
+                                    <div class="photo-caption">24/03 - Surprezoca! 🎁</div>
+                                </div>
+                                <video class="album-video" src="assets/videos/20-03.mov" controls preload="metadata"></video>
+
+                                <h3 class="page-date">09 de Abril</h3>
+                                <p class="page-text font-small">
+                                    Fizemos de tudo pra você conseguir viver seu sonho de ir no show do BTS! Eu não me interessava antes de te conhecer, mas jamais desmereceria seu sonho. Escutei as músicas, entrei na fila do ingresso e conseguimos! O dia que compramos o ingresso do BTS.
+                                </p>
+                                <div class="album-photo micro-photo" style="--rot: 1.5deg; display:block; width: 45%; margin: 5px auto;">
+                                    <img src="assets/imagens zoca/09-04.jpg" alt="Show BTS">
+                                    <div class="photo-caption">09/04 - BTS Ingressos! 🎟️</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SPREAD 8: Distância, Reencontro & Treino (Figurinhas 08 & 09) -->
+                    <div class="book-spread" data-spread="8">
+                        <!-- Left Page: Abril & Fig 08 -->
+                        <div class="book-page left-page">
+                            <div class="page-inner text-page sticker-page">
+                                <h3 class="page-date">Abril: Distância e Saudade</h3>
+                                <p class="page-text font-small">
+                                    O mês de abril foi conturbado. Ficamos muito tempo longe, com o Flávio passando mal tive que ficar 1 semana em Três Rios, depois viajei pro Rio. Ficamos quase 2 semanas sem nos ver. Mas você queria saber de tudo, se importava comigo.
+                                </p>
+                                <p class="page-text font-small">
+                                    <strong>21-04:</strong> Minha volta foi conturbada, você estava distante e brava comigo. Mas o importante é que nos entendemos. Esse dia foi muito especial, tomamos sorvete, vimos filme, comemos pizza. Foi importante ver que você ainda me amava.
+                                </p>
+
+                                <div class="sticker-slot" data-sticker="8" id="slot-8" style="width: 100px; margin: 10px auto 0;">
+                                    <div class="slot-empty">
+                                        <span class="slot-number">08</span>
+                                        <span class="slot-label">Sorvete & Pizza 🍕</span>
+                                    </div>
+                                    <div class="slot-filled">
+                                        <div class="sticker-image" data-sticker-id="8">
+                                            <div class="sticker-placeholder">08</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Right Page: Treino juntos & Fig 09 -->
+                        <div class="book-page right-page">
+                            <div class="page-inner text-page sticker-page">
+                                <h3 class="page-date">24 de Abril - Treino Juntos</h3>
+                                <p class="page-text font-small">
+                                    O dia que você foi treinar comigo. Você estava relutante, não queria de jeito nenhum. Mas fomos e até coisas chatas ficam divertidas juntos. Depois a gente comeu picolé e eu tirei a foto que eu mais amo sua: você está genuinamente feliz. Minha foto favorita do mundo!
+                                </p>
+                                
+                                <div class="album-photos-row" style="margin: 5px 0;">
+                                    <div class="album-photo micro-photo" style="--rot: -2deg; width:48%;">
+                                        <img src="assets/imagens zoca/24-04.jpg" alt="Treino 1">
+                                    </div>
+                                    <div class="album-photo micro-photo" style="--rot: 2deg; width:48%;">
+                                        <img src="assets/imagens zoca/24-04.02.jpg" alt="Treino 2">
+                                    </div>
+                                </div>
+
+                                <div class="sticker-slot" data-sticker="9" id="slot-9" style="width: 100px; margin: 0 auto;">
+                                    <div class="slot-empty">
+                                        <span class="slot-number">09</span>
+                                        <span class="slot-label">Treino 💪</span>
+                                    </div>
+                                    <div class="slot-filled">
+                                        <div class="sticker-image" data-sticker-id="9">
+                                            <div class="sticker-placeholder">09</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SPREAD 9: Maio, Superação & Família (Figurinha 10) -->
+                    <div class="book-spread" data-spread="9">
+                        <!-- Left Page: 13-05 e Fig 10 -->
+                        <div class="book-page left-page">
+                            <div class="page-inner text-page sticker-page scrollable-page">
+                                <h3 class="page-date">13 de Maio - Superação</h3>
+                                <p class="page-text font-small">
+                                    Essa época foi nebulosa, passamos por algumas coisas. Eu com problemas no serviço, meu chefe mandado embora, Tobito passando por cirurgia... Eu estava sem um CENTAVO. Foram uns 10-15 dias difíceis, mas fiz de tudo pra esse dia ser especial. Comemos pizza, treinamos, tomamos sorvete. Fazer você lembrar que me amava foi importante. Nenhum casal vive só de felicidade, o principal é passar por isso sem desistir.
+                                </p>
+                                <div class="album-photos-row" style="margin: 5px 0;">
+                                    <div class="album-photo micro-photo" style="--rot: -1.5deg; width: 31%;">
+                                        <img src="assets/imagens zoca/13-05.jpg" alt="Maio 1">
+                                    </div>
+                                    <div class="album-photo micro-photo" style="--rot: 2deg; width: 31%;">
+                                        <img src="assets/imagens zoca/13-05.02.jpg" alt="Maio 2">
+                                    </div>
+                                    <div class="album-photo micro-photo" style="--rot: -1deg; width: 31%;">
+                                        <img src="assets/imagens zoca/13.05.3.jpg" alt="Maio 3">
+                                    </div>
+                                </div>
+
+                                <div class="sticker-slot" data-sticker="10" id="slot-10" style="width: 100px; margin: 5px auto 0;">
+                                    <div class="slot-empty">
+                                        <span class="slot-number">10</span>
+                                        <span class="slot-label">Superação 🤝</span>
+                                    </div>
+                                    <div class="slot-filled">
+                                        <div class="sticker-image" data-sticker-id="10">
+                                            <div class="sticker-placeholder">10</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Right Page: Conhecendo a familia, Pai e Bobie Goods -->
+                        <div class="book-page right-page">
+                            <div class="page-inner text-page scrollable-page">
+                                <h3 class="page-date">16 de Maio - Minha Família</h3>
+                                <p class="page-text font-small">
+                                    Você conheceu minha família e todos gostaram de você. Minha irmã te amou, minha mãe também, o Flávio também. Almoçamos, brincamos. Vi uma criança sorrindo dentro de você, e tive certeza que era você com quem eu queria formar uma família. O fim de semana mais feliz da minha vida!
+                                </p>
+
+                                <h3 class="page-date">30 de Maio - Meu Pai</h3>
+                                <p class="page-text font-small">
+                                    Você conheceu meu pai. Fomos oficializados pra toda nossa família! Você foi confirmada na faculdade e ele quis te parabenizar. Um momento marcante.
+                                </p>
+                                <div class="album-photo micro-photo" style="--rot: 2deg; display:block; width: 45%; margin: 5px auto;">
+                                    <img src="assets/imagens zoca/30-05.png" alt="Faculdade / Pai">
+                                    <div class="photo-caption">30/05 - Conhecendo o Pai</div>
+                                </div>
+
+                                <h3 class="page-date">31 de Maio - Bobie Goods</h3>
+                                <p class="page-text font-small">
+                                    Nosso segundo bobie goods pintando com você! (O primeiro foi quando nos conhecemos pessoalmente). Conheci sua irmã e sua mãe. Ver nossas famílias se conhecendo me mostra o quanto você acredita em estar comigo.
+                                </p>
+                                <div class="album-photo micro-photo" style="--rot: -2deg; display:block; width: 50%; margin: 5px auto;">
+                                    <img src="assets/imagens zoca/31-05.jpg" alt="Bobie Goods">
+                                    <div class="photo-caption">31/05 - Pintando juntos</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SPREAD 10: Declaração & Figurinha 11 -->
+                    <div class="book-spread" data-spread="10">
+                        <!-- Left Page: Nossos Detalhes e Doces -->
+                        <div class="book-page left-page">
+                            <div class="page-inner text-page scrollable-page">
+                                <h3 class="page-title-romantic">Minha Zoquinha</h3>
+                                <p class="page-text font-small">
+                                    Não tenho palavras pra descrever o que sinto por você. Te amo mais que tudo na minha vida. As idas aos sebos comprar livros que virou um hábito cheio de afeto, as comidinhas que você faz pra mim (cookies e brownies que me fazem peidar kkk), a festinha da Maju, os inúmeros cafés, os lanches noturnos, você me ajudando a dar nome e me apoiando a jogar Pokémon...
+                                </p>
+                                <p class="page-text font-small">
+                                    O carinho que você tem ao cuidar de mim, me escutar sobre o que me magoa, me deixar ser eu com meus hobbies e meus defeitos... Obrigado por me fazer sentir especial. Eu nunca vou fazer nada pra te deixar triste de propósito. Quero sempre o seu bem.
+                                </p>
+                                <p class="page-text font-small">
+                                    Não sou bom com presentes, sempre falo que vou comprar doces. Mas senti que fazer algo programando, que é o que sei fazer, tem seu valor. Foi feito com muito carinho.
+                                </p>
+                                <div class="signature-box">
+                                    <p class="signature-text">Com todo o amor do mundo,</p>
+                                    <p class="signature-name">Zoca (Dudu)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Right Page: Figurinha 11 (Tirar Foto / Upload) -->
+                        <div class="book-page right-page">
+                            <div class="page-inner text-page sticker-page">
+                                <h3 class="page-date">Nossa Foto Atual</h3>
+                                <p class="page-text font-small" style="text-align: center; margin-bottom: 12px;">
+                                    E para completar este álbum, esta última figurinha pertence a você. Tire uma foto agora ou suba uma foto nossa recente para fechar nossa história com chave de ouro!
+                                </p>
+                                
+                                <div class="sticker-slot slot-photo" data-sticker="11" id="slot-11" onclick="triggerPhotoUpload()" style="width: 140px; height: 190px; margin: 0 auto;">
+                                    <div class="slot-empty">
+                                        <span class="slot-number">11</span>
+                                        <span class="slot-label">Nossa Foto 📸</span>
+                                        <button class="btn-upload-photo" onclick="event.stopPropagation(); triggerPhotoUpload();">Escolher Foto</button>
+                                    </div>
+                                    <div class="slot-filled">
+                                        <div class="sticker-image" data-sticker-id="11" id="sticker-11-img">
+                                            <!-- Loaded via JS background -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="file" id="photo-upload-input" accept="image/*" style="display:none;" onchange="handlePhotoUpload(event)">
+                                <p class="page-hint" style="margin-top: 12px;">Toque na figurinha para tirar uma foto ou fazer o upload!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SPREAD 11: Fim do Álbum -->
+                    <div class="book-spread single-spread" data-spread="11">
+                        <div class="book-page page-final">
+                            <div class="page-inner final-page">
+                                <div class="final-heart">❤️</div>
+                                <h2 class="final-title">Álbum Completo!</h2>
+                                <p class="final-message">
+                                    Cada figurinha, cada texto e cada risada é um pedacinho da nossa história que continuaremos a escrever juntos. Te amo para sempre, minha Zoquinha! ❤️
+                                </p>
+                                <div class="final-ornament">~ Dudu & Isadora ~</div>
+                                <div class="final-ornament">~ Digo... Zoca ~</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Album Navigation -->
+                <div class="album-nav">
+                    <button id="btn-prev-page" class="nav-arrow nav-prev" disabled>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+                    </button>
+                    <div class="page-dots" id="page-dots">
+                        <span class="dot active" data-dot="0"></span>
+                        <span class="dot" data-dot="1"></span>
+                        <span class="dot" data-dot="2"></span>
+                        <span class="dot" data-dot="3"></span>
+                        <span class="dot" data-dot="4"></span>
+                        <span class="dot" data-dot="5"></span>
+                        <span class="dot" data-dot="6"></span>
+                        <span class="dot" data-dot="7"></span>
+                        <span class="dot" data-dot="8"></span>
+                        <span class="dot" data-dot="9"></span>
+                        <span class="dot" data-dot="10"></span>
+                        <span class="dot" data-dot="11"></span>
+                    </div>
+                    <button id="btn-next-page" class="nav-arrow nav-next">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                    </button>
+                </div>
+            </div>
+            <div class="album-footer">
+                <button id="btn-go-packs" class="btn-secondary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg>
+                    <span>Pacotinhos</span>
+                </button>
+                <div class="sticker-progress" id="sticker-progress">
+                    <span class="progress-text"><span id="placed-count">0</span>/12 coladas</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== OVERLAY: COLAR FIGURINHA ===================== -->
+        <div id="overlay-place" class="overlay" style="display:none;">
+            <div class="overlay-content">
+                <h3>Colar figurinha?</h3>
+                <div class="overlay-sticker-preview" id="overlay-sticker-preview"></div>
+                <div class="overlay-actions">
+                    <button id="btn-place-confirm" class="btn-primary">
+                        <span>Colar! 🎉</span>
+                    </button>
+                    <button id="btn-place-cancel" class="btn-ghost">Voltar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================== CONFETTI CANVAS ===================== -->
+        <canvas id="confetti-canvas"></canvas>
+
+    </div>
+
+    <script src="script.js?v=love-v3"></script>
+</body>
+</html>
