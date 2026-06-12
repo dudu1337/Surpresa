@@ -1,0 +1,17 @@
+{
+  "name": "Álbum Zoca ❤️",
+  "short_name": "Zoca",
+  "start_url": "./",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#382012",
+  "theme_color": "#e8456b",
+  "icons": [
+    {
+      "src": "assets/capa.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
