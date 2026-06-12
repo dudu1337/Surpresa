@@ -1,14 +1,24 @@
 {
-  "name": "Álbum Zoca ❤️",
-  "short_name": "Zoca",
+  "name": "Nosso Álbum",
+  "short_name": "Nosso Álbum",
+  "description": "Nosso álbum de Dia dos Namorados.",
+  "id": "./",
   "start_url": "./",
+  "scope": "./",
   "display": "standalone",
+  "display_override": ["standalone"],
   "orientation": "landscape",
   "background_color": "#382012",
   "theme_color": "#e8456b",
   "icons": [
     {
-      "src": "assets/capa.png",
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
